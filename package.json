@@ -1,0 +1,25 @@
+{
+  "name": "local-bus",
+  "version": "0.0.1",
+  "description": "A generic bus for topic-based publication of events",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aomitayo/local-bus.git"
+  },
+  "keywords": [
+    "Microservice",
+    "Event",
+    "bus",
+    "eventsourcing"
+  ],
+  "author": "Adedayo Omitayo <adedayo.omitayo@flowswift.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Aomitayo/local-bus/issues"
+  },
+  "homepage": "https://github.com/Aomitayo/local-bus"
+}
