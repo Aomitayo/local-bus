@@ -1,22 +1,25 @@
 # local-bus
 
-A generic bus for topic-based publication of events.
-It represents my conceptualization of a topic based message bus for 
-event-sourced microservice architectures.
+A generic bus for topic-based message exchange.
 
 In applying the microservices architecutral style with or without event-sourcing,
-It is often necessary to listen on an amqp message queue. In many cases  we also
-find it necessary to broadcast events to listeners within the microservice and
-also to listeners outside the microservice. 
+It is often necessary to listen on a message queue. In many cases  we also
+find it necessary to broadcast messages to listeners both within and outside the
+microservice.
 
-This package is an abstraction over an amqp message bus. It serves as an event
-bus for internal modules of a microservice. 
-Extending node js's events.EventEmitter, it will notify internal modules of 
-internal and external events on topics of interest to the internal modules; whilst
-selectively publising internal events to external components/services that need to
-be notified of those events.
+This package is an abstraction over an Amqp message bus/broker. It serves as a 
+message bus for the internal modules of a microservice; and a message endpoint
+for external services.
 
-This package is still in early stages. Do feel free to use it at your own risk.
+It routes messages (which come from internal modules or external components) to 
+internal modules of the microservice. It also broadcast messages to external 
+components through an Amqp message broker.
+Message routing is based on topics, and topic patterns as implemented in Amqp.
+Configuration options allow for the pre-selection of the message topics that are 
+broadcast to external components.
+
+This package is still in the early stages of development. Do feel free to use it
+at your own risk.
 
 
 ## installation
@@ -30,13 +33,13 @@ var bus = require('local-bus')({
 	amqpUri: 'amqp://localhost:5672',
 	exchange: 'amqpExchange',
 	queue: 'amqpQueue',
-	pubTopics: ['stock.nyse.*', '#.trades.nyse']
+	broadcastTopics: ['stock.nyse.*', '#.trades.nyse']
 });
 
-bus.publish(topic, event);
+bus.publish(event);
 ...
 
-bus.subscribe('contacts.ContactRegistered.tenantx', function(event){
+bus.on('stock.nyse.google', function(event){
 	// Do something with event data here
 });
 

@@ -2,9 +2,9 @@
   "name": "local-bus",
   "version": "0.0.1",
   "description": "A generic bus for topic-based publication of events",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -R spec test"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,16 @@
   "bugs": {
     "url": "https://github.com/Aomitayo/local-bus/issues"
   },
-  "homepage": "https://github.com/Aomitayo/local-bus"
+  "homepage": "https://github.com/Aomitayo/local-bus",
+  "dependencies": {
+    "amqplib": "^0.3.2",
+    "debug": "^2.2.0",
+    "lodash": "^3.9.3",
+    "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "mocha": "~1.21.4",
+    "sinon":"1.10.3"
+  }
 }
