@@ -52,7 +52,7 @@ TopicSubscribers.prototype = {
 			return new RegExp(
 				'^' + pattern
 					.replace(/\.?\*\.?/g, '(\\.?[a-zA-Z0-9]+\\.?)')
-					.replace(/\.?\#\.?/g, '(\\.?[a-zA-Z0-9]+(.[a-zA-Z0-9])*\\.?)?') + '$'
+					.replace(/\.?\#\.?/g, '(\\.?[a-zA-Z0-9]+(.[a-zA-Z0-9]+)*\\.?)?') + '$'
 			);
 		}
 		else if(typeof pattern === 'object' && pattern.test){
