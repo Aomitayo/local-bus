@@ -18,5 +18,7 @@
   "strict": true,
   "trailing": true,
   "smarttabs": true,
-  "globals": {"describe":true, "context":true, "before":true, "beforeEach":true, "after":true, "afterEach":true, "it":true}
+  "globals": {"describe":true, "context":true, "before":true, "beforeEach":true, "after":true, "afterEach":true, "it":true},
+  "expr":"true",
+  "es5": true
 }

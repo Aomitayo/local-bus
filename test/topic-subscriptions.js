@@ -150,4 +150,48 @@ describe('TopicSubscribers', function(){
 			}).done();
 		});
 	});
+
+	context('Without wild cards', function(){
+		beforeEach(function(done){
+			this.subscribers = new TopicSubscribers();
+			done();
+		});
+		it('TopicSubscribers.choose returns the proper subscribers for parent pattern', function(done){
+			var test = this;
+			var nwatch = sinon.stub();
+			var gwatch = sinon.stub();
+			test.subscribers.add('stock.nyse', nwatch);
+			test.subscribers.add('stock.nyse.google', gwatch);
+			q.ninvoke(test.subscribers, 'choose', 'stock.nyse')
+			.then(function(found){
+				expect(found).to.have.length(1);
+				var containsAll = _.every([nwatch], _.partial(_.contains, found));
+				expect(containsAll).to.be.true;
+			})
+			.then(function(){return done();})
+			.fail(function(err){
+				return done(err);
+			})
+			.done();
+		});
+
+		it('TopicSubscribers.choose returns the proper subscribers for extended pattern', function(done){
+			var test = this;
+			var nwatch = sinon.stub();
+			var gwatch = sinon.stub();
+			test.subscribers.add('stock.nyse', nwatch);
+			test.subscribers.add('stock.nyse.google', gwatch);
+			q.ninvoke(test.subscribers, 'choose', 'stock.nyse.google')
+			.then(function(found){
+				expect(found).to.have.length(1);
+				var containsAll = _.every([gwatch], _.partial(_.contains, found));
+				expect(containsAll).to.be.true;
+			})
+			.then(function(){return done();})
+			.fail(function(err){
+				return done(err);
+			})
+			.done();
+		});
+	});
 });
