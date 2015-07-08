@@ -1,6 +1,6 @@
 {
   "name": "local-bus",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A generic bus for topic-based publication of events",
   "main": "src/index.js",
   "scripts": {
@@ -31,6 +31,6 @@
   "devDependencies": {
     "chai": "~1.9.1",
     "mocha": "~1.21.4",
-    "sinon":"1.10.3"
+    "sinon": "1.10.3"
   }
 }
