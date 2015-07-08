@@ -22,7 +22,7 @@ This package is still in the early stages of development. Do feel free to use it
 at your own risk.
 
 
-## installation
+## Installation
 
 npm install local-bus
 
